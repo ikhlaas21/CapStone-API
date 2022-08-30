@@ -10,7 +10,7 @@ const port = process.env.PORT
 
 
 app.get("/" ,(req,res)=>{
-    res.json({msg: "this is confirmation"});
+    res.json({msg: "/users and /listings"});
 })
 
 
