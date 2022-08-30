@@ -100,7 +100,7 @@ router.post("/", bodyparser.json(), async (req, res) => {
   // user login
   router.patch("/", bodyparser.json(), (req, res) => {
     try {
-      const { email, password } = req.body;
+      const { email, userpassword } = req.body;
       const strQry = `SELECT * FROM users WHERE email = '${email}'`;
   
       con.query(strQry, async (err, results) => {
@@ -110,7 +110,7 @@ router.post("/", bodyparser.json(), async (req, res) => {
             msg: "not found email was",
           });
         } else {
-          const isMatch = await compare(password, results[0].userpassword);
+          const isMatch = await compare(userpassword, results[0].userpassword);
           if (isMatch === true) {
             const payload = {
              user : results[0]

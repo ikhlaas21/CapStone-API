@@ -78,8 +78,7 @@ router.get("/:id", (req, res) => {
         con.query(strQry, (err, results) => {
             if (err) throw err;
             res.json({
-                results,
-
+                results : results,
                 msg : "One from listings was selected"
             }) 
         })
@@ -88,6 +87,23 @@ router.get("/:id", (req, res) => {
             error
         })
     }
+})
+
+/// fetch all
+router.get("/listings", (req, res) => {
+  try {
+      con.query("SELECT* FROM listings", (err, result) => {
+          if (err) throw err
+
+          res.json({
+            status : 200,
+            results : result
+          })
+      })
+  } catch (error) {
+      console.log(error);
+      res.status(400).send(error)
+  }
 })
 
 
