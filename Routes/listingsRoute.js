@@ -89,6 +89,25 @@ router.get("/:id", (req, res) => {
     }
 })
 
+// fetch one from listings posting
+router.get("/userlisting/:id", (req, res) => {
+  try {
+      const strQry = `SELECT * FROM listings WHERE userid = ${req.params.id}`
+      
+      con.query(strQry, (err, results) => {
+          if (err) throw err;
+          res.json({
+              results : results,
+              msg : "profile already exists"
+          }) 
+      })
+  } catch (error) {
+      res.status(400).json({
+          error
+      })
+  }
+})
+
 /// fetch all
 router.get("/listings", (req, res) => {
   try {
