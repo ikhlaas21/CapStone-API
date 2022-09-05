@@ -111,7 +111,7 @@ router.get("/userlisting/:id", (req, res) => {
 /// fetch all
 router.get("/listings", (req, res) => {
   try {
-      con.query("SELECT* FROM listings", (err, result) => {
+      con.query("SELECT * FROM listings", (err, result) => {
           if (err) throw err
 
           res.json({
