@@ -107,11 +107,15 @@ router.post("/", bodyparser.json(), async (req, res) => {
         if (err) throw err;
         if (results.length === 0) {
           res.json({
-            msg: "not found email was",
+            msg: "not found your email was",
           });
         } else {
           const isMatch = await compare(userpassword, results[0].userpassword);
-          if (isMatch === true) {
+          if(!isMatch){
+            res.json({
+              msg: "incorrect your password was"
+            })
+          }else {
             const payload = {
              user : results[0]
               // user: {
