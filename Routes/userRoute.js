@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
 // fetch one from users 
 router.get("/:id", (req, res) => {
     try {
-        const strQry = `SELECT FROM users WHERE id = ${req.params.id}`
+        const strQry = `SELECT * FROM users WHERE id = ${req.params.id}`
         
         con.query(strQry, (err, results) => {
             if (err) throw err;
