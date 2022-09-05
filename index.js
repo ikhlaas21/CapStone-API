@@ -44,7 +44,7 @@ app.listen(port,(err)=>{
 const userRoute =  require("./Routes/userRoute")
 app.use("/users", userRoute)
 
-const listingsRoute =  require("./Routes/listingsRoute")
+const listingsRoute =  require("./Routes/userRoute")
 app.use("/listings", listingsRoute)
 
 const enquiriesRoute = require("./Routes/enquiriesRoute")
