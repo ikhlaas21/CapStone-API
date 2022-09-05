@@ -16,24 +16,24 @@ app.use((req, res, next) => {
     next();
   });
 
-app.get("/" ,(req,res)=>{
-    res.json({msg: "/users and /listings"});
-})
+// app.get("/" ,(req,res)=>{
+//     res.json({msg: "/users and /listings"});
+// })
 
 
-app.get('/listings',(req,res) => {
-    let sql = `Select * from listings;`
-    db.query(sql,(err,results) => {
-        if(err){
-            console.log(err)
-        }else{
-            res.json({
-                status : 200,
-                results : results
-            })
-        }
-    })
-})
+// app.get('/listings',(req,res) => {
+//     let sql = `Select * from listings;`
+//     db.query(sql,(err,results) => {
+//         if(err){
+//             console.log(err)
+//         }else{
+//             res.json({
+//                 status : 200,
+//                 results : results
+//             })
+//         }
+//     })
+// })
 
 
 app.listen(port,(err)=>{
@@ -44,7 +44,7 @@ app.listen(port,(err)=>{
 const userRoute =  require("./Routes/userRoute")
 app.use("/users", userRoute)
 
-const listingsRoute =  require("./Routes/userRoute")
+const listingsRoute =  require("./Routes/listingsRoute")
 app.use("/listings", listingsRoute)
 
 const enquiriesRoute = require("./Routes/enquiriesRoute")
