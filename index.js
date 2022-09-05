@@ -16,9 +16,9 @@ app.use((req, res, next) => {
     next();
   });
 
-// app.get("/" ,(req,res)=>{
-//     res.json({msg: "/users and /listings"});
-// })
+app.get("/" ,(req,res)=>{
+    res.json({msg: "/users and /listings"});
+})
 
 
 // app.get('/listings',(req,res) => {
