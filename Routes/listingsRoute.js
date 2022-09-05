@@ -98,7 +98,7 @@ router.get("/userlisting/:id", (req, res) => {
           if (err) throw err;
           res.json({
               results : results,
-              msg : "profile already exists"
+             
           }) 
       })
   } catch (error) {
