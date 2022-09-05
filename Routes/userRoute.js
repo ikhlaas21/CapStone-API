@@ -136,18 +136,14 @@ router.post("/", bodyparser.json(), async (req, res) => {
                       msg: "Login Successful",
                       user: payload.user,
                       token: token,
-                      results: resul
+                      results: result,
                   });
                   // res.json(payload.user);
               }
               );
           // };
             
-          } else {
-            res.json({
-              msg: "Incorrect your password was",
-            });
-          }
+          } 
         }
       });
     } catch (error) {
