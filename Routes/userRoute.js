@@ -107,15 +107,11 @@ router.post("/", bodyparser.json(), async (req, res) => {
         if (err) throw err;
         if (results.length === 0) {
           res.json({
-            msg: "not found your email was",
+            msg: "not found email was",
           });
         } else {
           const isMatch = await compare(userpassword, results[0].userpassword);
-          if(!isMatch){
-            res.json({
-              msg: "incorrect your password was"
-            })
-          }else {
+          if (isMatch === true) {
             const payload = {
              user : results[0]
               // user: {
@@ -136,14 +132,17 @@ router.post("/", bodyparser.json(), async (req, res) => {
                       msg: "Login Successful",
                       user: payload.user,
                       token: token,
-                      results: result,
                   });
                   // res.json(payload.user);
               }
               );
           // };
             
-          } 
+          } else {
+            res.json({
+              msg: "Incorrect your password was",
+            });
+          }
         }
       });
     } catch (error) {
