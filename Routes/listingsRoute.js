@@ -6,6 +6,38 @@ const bodyparser = require("body-parser");
 // const jwt = require("jsonwebtoken");
 // const { hash, compare } = require("bcrypt");
  
+// add product listing
+router.post("/listings", bodyparser.json(),  (req, res) => {
+  try {
+    const list = req.body;
+    const strQry = `INSERT INTO listings (listingName, listingUrl, listingDescription, githubUrl, linkedinUrl, projectLink, personDescription, SpecialtyOption) VALUES (?,?,?,?,?,?,?,?)`;
+
+    con.query(
+      strQry,
+      [
+        list.listingName,
+        list.listingUrl,
+        list.listingDescription,
+        list.githubUrl,
+        list.linkedinUrl,
+        list.projectLink,
+        list.personDescription,
+        list.SpecialtyOption,
+      ],
+      (err, results) => {
+        if (err) throw err;
+        res.status(200).json({
+          msg: "Listing Added",
+        });
+      }
+    );
+  } catch (error) {
+    res.status(200).json({
+      error,
+    });
+  }
+});
+
  
  // add register listing
 router.post("/", bodyparser.json(), async (req, res) => {
