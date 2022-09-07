@@ -130,7 +130,7 @@ router.post("/", bodyparser.json(), async (req, res) => {
                   if (err) throw err;
                   res.json({
                       msg: "Login Successful",
-                      user: payload,
+                      user: payload.user,
                       token: token,
                   });
                   // res.json(payload.user);
