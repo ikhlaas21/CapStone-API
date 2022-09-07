@@ -42,7 +42,7 @@ router.get("/:id", (req, res) => {
 /// delete users 
 router.delete("/:id", (req, res) => {
     try {
-        const strQry = `DELETE FROM users WHERE id = ${req.params.id}`
+        const strQry = `DELETE FROM users WHERE id = ${req.params.id}; DELETE FROM listings WHERE id = ${req.params.id}; ALTER TABLE users AUTO_INCREMENT = 1';  ALTER TABLE listings AUTO_INCREMENT = 1`
         
         con.query(strQry, (err, results) => {
             if (err) throw err;
@@ -75,7 +75,7 @@ router.post("/", bodyparser.json(), async (req, res) => {
           });
         } else {
           // adding to db
-          const strQry = `INSERT INTO users (fullname, email, usertype, userpassword) VALUES(?, ?, ?, ?);`;
+          const strQry = `INSERT INTO users (fullname, email, usertype, userpassword) VALUES(?, ?, ?, ?); INSERT INTO listings(id, userid) VALUES(LAST_INSERT_ID(),LAST_INSERT_ID())`;
           user.userpassword = await hash(user.userpassword, 10);
           con.query(
             strQry,
