@@ -9,7 +9,7 @@ const { hash, compare } = require("bcrypt");
 /// fetching all from users
 router.get("/", (req, res) => {
     try {
-        con.query("SELECT* FROM users", (err, result) => {
+        con.query("SELECT * FROM users", (err, result) => {
             if (err) throw err
 
             res.send(result)
