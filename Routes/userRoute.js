@@ -39,10 +39,10 @@ router.get("/:id", (req, res) => {
     }
 })
 
-/// delete users 
+/// delete user
 router.delete("/:id", (req, res) => {
     try {
-        const strQry = `DELETE FROM users WHERE id = ${req.params.id}; DELETE FROM listings WHERE id = ${req.params.id}; ALTER TABLE users AUTO_INCREMENT = 1';  ALTER TABLE listings AUTO_INCREMENT = 1`
+        const strQry = `DELETE FROM users WHERE id = ${req.params.id}; DELETE FROM listings WHERE id = ${req.params.id}; ALTER TABLE users AUTO_INCREMENT = 1;  ALTER TABLE listings AUTO_INCREMENT = 1;`
         
         con.query(strQry, (err, results) => {
             if (err) throw err;
