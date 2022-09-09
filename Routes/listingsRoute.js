@@ -23,6 +23,7 @@ router.post("/listings", bodyparser.json(),  (req, res) => {
         list.projectLink,
         list.personDescription,
         list.SpecialtyOption,
+        list.userid
       ],
       (err, results) => {
         if (err) throw err;
@@ -158,40 +159,9 @@ router.get("/", (req, res) => {
 })
 
 
-///// only public 
-router.get("/public/listings", (req, res) => {
-  try {
-      con.query("SELECT * FROM listings WHERE displayPublic != 0", (err, result) => {
-          if (err) throw err
-
-          res.json({
-            status : 200,
-            results : result
-          })
-      })
-  } catch (error) {
-      console.log(error);
-      res.status(400).send(error)
-  }
-})
 
 
-///// only public action true
-router.put("/public/listings/:id", (req, res) => {
-  try {
-      con.query(`UPDATE listings SET displayPublic = 1 WHERE id = ${req.params.id};`, (err, result) => {
-          if (err) throw err
 
-          res.json({
-            status : 200,
-            results : result
-          })
-      })
-  } catch (error) {
-      console.log(error);
-      res.status(400).send(error)
-  }
-})
 
 
 /// delete listings

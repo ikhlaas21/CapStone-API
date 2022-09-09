@@ -75,7 +75,7 @@ router.post("/", bodyparser.json(), async (req, res) => {
           });
         } else {
           // adding to db
-          const strQry = `INSERT INTO users (fullname, email, usertype, userpassword) VALUES(?, ?, ?, ?); INSERT INTO listings(id, userid) VALUES(LAST_INSERT_ID(),LAST_INSERT_ID())`;
+          const strQry = `INSERT INTO users (fullname, email, usertype, userpassword) VALUES(?, ?, ?, ?)`;
           user.userpassword = await hash(user.userpassword, 10);
           con.query(
             strQry,
